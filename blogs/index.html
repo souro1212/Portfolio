@@ -6,6 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<!-- <link rel="stylesheet" href="https://unpkg.com/octicons@4.4.0/build/font/octicons.css">
+<link rel="stylesheet" href="https://unpkg.com/github-activity-feed@latest/dist/github-activity.min.css">
+
+<script type="text/javascript" src="https://unpkg.com/mustache@4.2.0/mustache.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/github-activity-feed@latest/dist/github-activity.min.js"></script>
+
+ if using dark theme add this in addition to the main CSS file --
+<link rel="stylesheet" href="https://unpkg.com/github-activity-feed@latest/dist/github-activity.dark.min.css"> -->
+
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </style>
@@ -50,6 +60,29 @@ and is wrapped around the whole page content, except for the footer in this exam
   </div>
   <hr>
 
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white">
+    <img src="images/champion.jpg" alt="Nature" style="width:100%">
+    <div class="w3-container">
+      <h3><b>Security Champion Program At Medly - A step towards DevSecOps</b></h3>
+      <h5><span class="w3-opacity">Aug 6, 2022</span></h5>
+      <span class="w3-tag w3-black w3-margin-bottom">Security</span> <span class="w3-tag w3-black w3-margin-bottom">AppSec</span> 
+      <span class="w3-tag w3-black w3-margin-bottom">DevSecOps</span>
+    </div>
+
+    <div class="w3-container">
+      <p>DevOps enables rapid software development, but often neglects security. 
+        Introducing security champions ensures ongoing security focus, preventing production-stage delays caused by fixing identified vulnerabilities, and enhancing product quality.
+      </p>
+      <div class="w3-row">
+        <div class="w3-col m8 s12">
+          <p><button class="w3-button w3-padding-large w3-white w3-border" onclick="getBlog('securityChampionsMedly.html')"><b>READ MORE »</b></button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+
   
 <!-- END BLOG ENTRIES -->
 </div>
@@ -58,7 +91,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 <div class="w3-col l4">
   <!-- About Card -->
   <div class="w3-card w3-margin w3-margin-top">
-  <img src="images/profile.jpeg" style="width:100%">
+  <img src="images/user.jpg" style="width:100%">
     <div class="w3-container w3-white">
       <h4><b>My Name</b></h4>
       <p>I am an experienced Application Security Engineer with 6.9 years of industry experience in telecom and healthcare. 
@@ -67,7 +100,7 @@ and is wrapped around the whole page content, except for the footer in this exam
   </div><hr>
   
   <!-- Posts -->
-  <!-- <div class="w3-card w3-margin">
+  <!--<div class="w3-card w3-margin">
     <div class="w3-container w3-padding">
       <h4>Popular Posts</h4>
     </div>
@@ -78,7 +111,8 @@ and is wrapped around the whole page content, except for the footer in this exam
         <span>Enhancing application security (AppSec) is crucial in today's digital landscape. This blog explores key practices for developers to protect software from vulnerabilities.</span>
       </li>
     </ul>
-  </div> -->
+  </div> 
+  <div id="feed"></div>-->
   <hr> 
  
   <!-- Labels / tags -->
@@ -88,6 +122,7 @@ and is wrapped around the whole page content, except for the footer in this exam
     </div>
     <div class="w3-container w3-white">
     <p><span class="w3-tag w3-black w3-margin-bottom">Security</span> <span class="w3-tag w3-black w3-margin-bottom">AppSec</span> 
+      <span class="w3-tag w3-black w3-margin-bottom">DevSecOps</span> 
     </p>
     </div>
   </div>
@@ -113,6 +148,11 @@ and is wrapped around the whole page content, except for the footer in this exam
     window.location = pageName;
   }
   
+//   GitHubActivity.feed({
+//   username: "souro1212",
+//   selector: "#feed",
+//   limit: 10, // optional
+// });
   
   </script>
 

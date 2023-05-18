@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<style>
+body, html {
+  height: 100%;
+  font-family: "Inconsolata", sans-serif;
+}
+
+.bgimg {
+  background-position: center;
+  background-size: cover;
+  background-image: url("images/champion.jpg");
+  min-height: 75%;
+}
+
+.menu {
+  display: none;
+}
+
+img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+</head>
+<body>
+
+<!-- Links (sit on top) -->
+<div class="w3-top">
+    <div class="w3-row w3-padding w3-black">
+      <div class="w3-col s3">
+        <a href="/blogs" class="w3-button w3-block w3-black">HOME</a>
+      </div>
+    </div>
+  </div>
+
+<!-- Header with image -->
+<header class="bgimg w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
+    <span class="w3-tag">Aug 6, 2022</span>
+  </div>
+  <div class="w3-display-middle w3-center">
+    <span class="w3-text-white" style="font-size:47px">Security Champion Program At Medly - A step towards DevSecOps</span>
+  </div>
+</header>
+
+<!-- Add a background color and large text to the whole page -->
+<div class="w3-sand w3-grayscale w3-large">
+
+<!-- About Container -->
+<div class="w3-container" id="about">
+  <div class="w3-content" style="max-width:1000px">
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Introduction</span></h5> 
+    <p>When it comes to software development, DevOps has given organizations unprecedented levels of speed and flexibility. 
+        However, too often, speed comes at the expense of security. After all, the faster teams need to deliver code, the easier it is to overlook security or postpone it. 
+        Many organizations that rush past security in the development stage have to slow down significantly in the production stage when security flaws are identified and need to be fixed. 
+        That’s where security champions come in! By introducing a security champion into your development team, you can keep security at the forefront while improving overall product quality.
+    </p>
+    <img src="images/devsecops.jpg" style="width:100%;max-width:1000px" class="w3-margin-top"> 
+
+
+    <h6 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Who Is A Security Champion?</span></h6>
+    <p>
+        A security champion can be any team member interested in security and serves as a liaison between development and security—two traditionally siloed teams. 
+        A good security champion advocates security awareness in the entire team, striving to teach the ropes to others as well. 
+        The goal of a security champion is to be an enabler, not a blocker. A security champion is also responsible for ensuring that the team's code is secure, free from any security issues, and compliant with industry best practices. 
+        This can be achieved through code reviews, static analysis, and dynamic analysis.
+    </p>
+
+    <h6 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Who Can Be A Security Champion?</span></h6>
+    <p>
+        Ideally, a security champion is someone familiar with the product under development and is aware of any potential security issues. 
+        In most cases, the security champion is a developer, but they could also be a QA, a designer, an architect, a DevOps, or even a product manager. 
+        The security champion doesn’t have to be the scrum master or a team leader. However, team leaders must support the security champion and prioritize security as a project goal.
+    </p>
+
+    <h6 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Medly’s Security Champion Program</span></h6>
+    <p>
+        We recognized the importance of the security champion program in strengthening our core security value and shifting security left and implemented the program earlier this year. 
+        Our Platform Security team plays a pivotal role in the smooth operation of the security champion program and ensures the following:
+        <ul>
+            <li>Arranges regular catch-ups with the security champions.</li>
+            <li>Helps the champions set up security tools for the team.</li>
+            <li>Provides regular training to the security champions on:
+                <ul>
+                    <li>Secure coding</li>
+                    <li>DevSecOps</li>
+                    <li>Threat Modeling</li>
+                </ul>
+            </li>
+            <li>Addresses any security-related questions.</li>
+        </ul>
+    </p>
+
+    <h6 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Role Of A Security Champion At Medly</span></h6>
+    <p>
+        Medly's security champions serve as the team’s security conscience, keeping their eyes and ears open for potential security threats. 
+        A Medly security champion performs the following tasks:    
+        <ul>
+            <li>Regularly connects with the security team about the product’s security posture.</li>
+            <li>Defines security best practices for the team.</li>
+            <li>Prioritizes security-relevant stories in the backlog.</li>
+            <li>Monitors vulnerabilities in tools and libraries that the team is using.</li>
+            <li>Owns the threat model of the product.</li>
+            <li>Collaborates with the other security champions within Medly to share ideas.</li>
+            <li>Raises awareness of the security issues within the development team.</li>
+            <li>Acts as a single point of contact for escalating an issue to the security team for review.</li>
+            <li>Conducts secure code reviews and brings up any risks in the code base.</li>
+            <li>Utilizes security testing tools to perform or validate automated security scanning.</li>
+            <li>Spends approximately an hour per week on security-related activities.</li>
+            <li>Promotes and manages events like Capture the Flag (CTF) competitions to assist in detecting vulnerabilities.</li>
+        </ul>
+    </p>
+
+    <h6 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">How Medly Kickstarted The Security Champion Program</span></h6>
+    <p>
+        The program kicked off earlier this year with a small group of dedicated security champions committed to helping us achieve our security goals. 
+        Since then, the security champion program has grown significantly. 
+        We now have over 30 security champions actively involved in the program across multiple products, data engineering, and IT teams. 
+        We’re excited to see the program grow and look forward to seeing the impact our security champions have on the security of the organization. 
+    </p>
+    <p>By following the steps outlined below, we built an effective team of security champions:
+        <ul>
+            <li>Identifying the requirements of the program</li>
+            <li>Defining the roles and responsibilities of the security champions</li>
+            <li>Nominating the security champions</li>
+            <li>Setting up communication channels</li>
+            <li>Building a solid knowledge base</li>
+        </ul>
+    </p>
+    <p>The below flowchart explains each of these steps in detail.    </p>
+    <img src="images/playbook.png" style="width:100%;max-width:1000px" class="w3-margin-top"> 
+
+    <h6 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Impact Of Security Champion Program At Medly</span></h6>
+    <p>The security champion program at Medly has had a positive impact on the overall security of the organization. 
+        The program has helped to raise awareness of security risks and vulnerabilities and has also helped to improve the security posture of the organization.
+    </p>
+    <p>Here are some of the prominent highlights of the program:
+       <ul>
+        <li>Our vulnerability fix meantime has been 16 days compared to the industry standard of 120 days.</li>
+        <li>The critical security issues are already 63% lower, thanks to our security champions, who are actively fixing vulnerabilities.</li>
+        <li>The security champions fixed 1280+ vulnerabilities in just 3 days of kickstarting the program.</li>
+       </ul>
+    </p>
+
+    <h6 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Summing It Up</span></h6>
+    <p>Security champions at Medly play a significant role in inculcating a sense of responsibility for security within the organization. 
+        Implementing the security champion program has helped us to contribute to a culture of security awareness, leading to more secure applications and better security features.
+    </p>
+
+    <p>
+        We hope this blog inspires you to implement a security champions program at your organization and empower your employees to address security issues proactively. Happy reading, folks!
+    </p>
+
+    <!-- <div class="w3-panel w3-leftbar w3-light-grey">
+      <p><i>"Use products from nature for what it's worth - but never too early, nor too late." Fresh is the new sweet.</i></p>
+      <p>Chef, Coffeeist and Owner: Liam Brown</p>
+    </div>-->
+    
+    
+  </div>
+</div>
+
+
+
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-light-grey w3-padding-48 w3-large">
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
+
+<script>
+
+</script>
+
+</body>
+</html>
