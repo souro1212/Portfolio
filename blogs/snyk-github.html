@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/kimbie-dark.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<style>
+body, html {
+  height: 100%;
+  font-family: "Inconsolata", sans-serif;
+}
+
+.bgimg {
+  background-position: center;
+  background-size: cover;
+  background-image: url("images/git-snyk.jpeg");
+  min-height: 75%;
+}
+
+.menu {
+  display: none;
+}
+
+img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+</head>
+<body>
+
+<!-- Links (sit on top) -->
+<div class="w3-top">
+    <div class="w3-row w3-padding w3-black">
+      <div class="w3-col s3">
+        <a href="/blogs" class="w3-button w3-block w3-black">HOME</a>
+      </div>
+      <div class="w3-col s3">
+        <a href="https://github.com/souro1212/import-snyk-projects" class="w3-button w3-block w3-black" target="_blank"><i class="fa fa-home"></i> GitHub</a>
+      </div> 
+    </div>
+  </div>
+
+<!-- Header with image -->
+<header class="bgimg w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
+    <span class="w3-tag">May 25, 2023</span>
+  </div>
+  <div class="w3-display-middle w3-center">
+    <span class="w3-text-white" style="font-size:47px">Syncing Snyk with GitHub SCM using the Snyk API    </span>
+  </div>
+</header>
+
+<!-- Add a background color and large text to the whole page -->
+<div class="w3-sand w3-grayscale w3-large">
+
+<!-- About Container -->
+<div class="w3-container" id="about">
+  <div class="w3-content" style="max-width:1000px">
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Introduction</span></h5> 
+    <p>In today's software development landscape, security is of paramount importance. 
+        Integrating security scanning tools into your development workflow can help identify vulnerabilities and ensure the safety of your codebase. 
+        Snyk is one such powerful security platform that helps developers find, fix, and monitor vulnerabilities in their open-source libraries and container images. 
+        In this blog post, we will explore how to sync Snyk with GitHub SCM using the Snyk API.
+    </p>
+
+    <h6 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Prerequisites</span></h6>
+    <p>
+        Before we dive into the integration process, make sure you have the following requirements fulfilled:
+    </p>
+    <ul>
+        <li>A GitHub account with access to the repository you want to sync with Snyk.</li>
+        <li>A Snyk account with the appropriate access privileges.</li>
+        <li>A GitHub personal access token (PAT) with the necessary permissions to access the repository. You can create a PAT by following the official GitHub documentation.</li>
+        <li>A Snyk API token, which you can generate from the Snyk dashboard.</li>      
+    </ul>
+
+    <h6 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Integration Steps</span></h6>
+    <p>
+        To integrate Snyk with GitHub SCM, we will use a GitHub Actions workflow that runs on a schedule. 
+        The workflow will perform the following tasks:
+    </p>
+    <p>
+        <b>Step 1: Setting up the workflow file</b>
+    </p>
+    <p>
+        Create a new file called <code class="w3-codespan">.github/workflows/snyk-sync.yml</code> in your repository and paste the following code:
+    </p>
+    
+    <pre>
+        <code class="language-html">
+            on:
+              schedule:
+                - cron: '0 0 * * *'
+            
+            jobs:
+              snyk-import:
+                runs-on: ubuntu-latest
+                env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+                  SNYK_LOG_PATH: "."
+                steps:
+                  - name: Checkout code
+                    uses: actions/checkout@v2
+                  - name: Install dependencies
+                    uses: actions/setup-node@v2
+                    with:
+                      node-version: '14.x'
+                  - name: Install dependencies
+                    run: npm install
+                  - name: Install snyk-import 
+                    run: npm install snyk-api-import@latest -g
+                  - name: Create import data for snyk
+                    run: DEBUG=*snyk* snyk-api-import import:data --orgsData=${{ github.workspace }}/snyk-orgs.json --source=github
+                  - name: Import data to snyk
+                    run: DEBUG=*snyk* snyk-api-import import --file=${{ github.workspace }}/github-import-targets.json 
+
+        </code>
+    </pre>
+
+    <p><b>Step 2: Understanding the workflow steps</b></p>
+    <p>Let's break down the different steps in the workflow: </p>
+    <ul>
+        <li>The <code class="w3-codespan">on</code> section defines the schedule for the workflow. In this example, the workflow will run daily at midnight (00:00) UTC.</li>
+        <li>The <code class="w3-codespan">snyk-import</code> job runs on an Ubuntu environment using the latest version of Ubuntu.</li>
+        <li>The <code class="w3-codespan">env</code> section sets up the environment variables required for the workflow:</li>
+        <ul>
+            <li><code class="w3-codespan">GITHUB_TOKEN</code> holds the GitHub personal access token.</li>
+            <li><code class="w3-codespan">SNYK_TOKEN</code> holds the Snyk API token.</li>
+            <li><code class="w3-codespan">SNYK_LOG_PATH</code> specifies the path where Snyk logs will be stored. In this example, logs will be stored in the root directory (".").</li>
+        </ul>
+        <li>The workflow then proceeds with the following steps:</li>
+        <ul>
+            <li>Checking out the repository code using actions/checkout@v2.</li>
+            <li>Setting up the Node.js environment using actions/setup-node@v2.</li>
+            <li>Installing project dependencies with npm install.</li>
+            <li>Installing the snyk-api-import package globally using npm install snyk-api-import@latest -g.</li>
+            <li>Creating import data for Snyk by executing snyk-api-import import:data. This step generates a file called snyk-orgs.json in the repository's workspace.</li>
+            <li>Importing the data to Snyk by executing snyk-api-import import. This step uses the github-import-targets.json file generated in the repository's workspace.</li>    
+        </ul>
+    </ul>
+    <p><b>Step 3: Configuring Snyk and GitHub integration</b></p>
+    <p>To ensure successful synchronization between Snyk and GitHub, you need to provide the necessary data in the <code class="w3-codespan">snyk-orgs.json</code> and <code class="w3-codespan">github-import-targets.json</code> files. 
+        Modify these files according to your requirements. 
+        For more information on configuring these files, refer to the Snyk API documentation.
+    </p>
+
+    <p><b>Step 4: Setting up secrets</b></p>
+    <p>To avoid exposing sensitive data, we utilize GitHub Secrets to store the GitHub and Snyk tokens securely. 
+        To add secrets to your repository:
+    </p>
+
+    <ul>
+        <li>Go to your repository's page on GitHub.</li>
+        <li>Under the repository name, click on "Settings."</li>
+        <li>In the left sidebar, click on "Secrets."</li>
+        <li>Click on "New repository secret."</li>
+        <li>Enter GITHUB_TOKEN as the name and paste your GitHub personal access token in the "Value" field.</li>
+        <li>Click on "Add secret" to save the token.</li>
+        <li>Repeat the above steps to add SNYK_TOKEN as the name and paste your Snyk API token as the value.</li>
+    </ul>
+    
+    <h6 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Conclusion</span></h6>
+    <p>
+        By following the steps outlined in this blog post, you can easily sync Snyk with your GitHub SCM using the Snyk API. 
+        This integration enables you to regularly import and update data from your GitHub repository into Snyk, allowing you to identify and address security vulnerabilities in your codebase. 
+        Incorporating security practices into your development workflow is crucial, and with Snyk and GitHub working together, you can enhance the security of your software projects and ensure a safer environment for your users.
+    </p>
+
+    <i class="fa fa-github"></i><a href="https://github.com/souro1212/import-snyk-projects" target="_blank"> https://github.com/souro1212/import-snyk-projects</a>
+
+  </div>
+</div>
+
+
+
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-light-grey w3-padding-48 w3-large">
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
+
+<script>
+ hljs.highlightAll();
+</script>
+
+</body>
+</html>
