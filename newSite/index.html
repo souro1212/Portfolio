@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Souradip | Cybersecurity Enthusiast</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0f0f0f;
+      color: #00ffcc;
+      overflow-x: hidden;
+      cursor: url('https://cdn-icons-png.flaticon.com/512/2919/2919592.png') 16 16, auto;
+    }
+    .container {
+      text-align: center;
+      padding: 2rem 1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeInUp 1s ease-out forwards;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .section {
+      padding: 1rem 0.5rem;
+      margin-top: 2rem;
+      background: rgba(15, 15, 15, 0.5);
+      border-radius: 8px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      animation: fadeInUp 1s ease-out forwards;
+      animation-delay: 0.3s;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #00ffcc;
+      text-shadow: 0 0 20px #00ffcc;
+    }
+    h2 {
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+    .btn {
+      padding: 0.75rem 1.5rem;
+      margin: 0.5rem;
+      border: 2px solid #00ffcc;
+      color: #00ffcc;
+      background: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s, transform 0.3s ease;
+    }
+    .btn:hover {
+      background: #00ffcc;
+      color: #000;
+      transform: scale(1.05);
+    }
+    .matrix {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: black;
+      overflow: hidden;
+    }
+    .profile-img {
+      max-width: 180px;
+      border-radius: 10px;
+      margin-top: 1rem;
+    }
+    .skills-bar {
+      width: 90%;
+      background: #333;
+      border-radius: 5px;
+      margin: 0.5rem auto;
+    }
+    .skills-fill {
+      background: #00ffcc;
+      height: 10px;
+      border-radius: 5px;
+    }
+    .footer {
+      text-align: center;
+      padding: 4rem 1rem 5rem;
+    }
+    .social-icons {
+      margin-top: 2rem;
+    }
+    .social-icons a {
+      margin: 0.5rem;
+      display: inline-block;
+      font-size: 1.25rem;
+      color: #00ffcc;
+      text-decoration: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0, 255, 204, 0.1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #00ffcc;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .social-icons a:hover {
+      transform: scale(1.2);
+      background: #00ffcc;
+      color: #000;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 80%;
+      margin: 0.5rem 0;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-family: 'Orbitron', sans-serif;
+      background: #111;
+      color: #00ffcc;
+      box-shadow: 0 0 5px #00ffcc33;
+    }
+    .contact-form textarea {
+      resize: vertical;
+    }
+  </style>
+</head>
+<body>
+  <div class="matrix">
+    <canvas id="matrix"></canvas>
+  </div>
+  <div class="container">
+    <h1 id="top">SOURADIP</h1>
+    <h2>AppSec & Cybersecurity</h2>
+    <div>
+      <button class="btn" onclick="document.getElementById('about').scrollIntoView()">About</button>
+      <button class="btn" onclick="document.getElementById('skills').scrollIntoView()">Skills</button>
+      <button class="btn" onclick="document.getElementById('work').scrollIntoView()">My Work</button>
+      <button class="btn" onclick="document.getElementById('contact').scrollIntoView()">Contact</button>
+    </div>
+  </div>
+
+  <div class="container section" id="about">
+    <h2>About Me</h2>
+    <p>With 8+ years of hands-on experience in the telecom and healthcare sectors, I am a seasoned Application Security Engineer skilled in various domains. My expertise lies in DevSecOps implementation, conducting comprehensive vulnerability analyses, writing secure code, and proficient application development.</p>
+    <p><strong>Souradip Ghosh</strong></p>
+    <img src="../images/user.jpg" alt="Souradip Ghosh" class="profile-img">
+  </div>
+
+  <div class="container section" id="skills">
+    <h2>I'm really good at:</h2>
+    <p>AppSec & DevSecOps</p>
+    <div class="skills-bar"><div class="skills-fill" style="width: 90%;"></div></div>
+    <p>DAST, SAST & SCA tools</p>
+    <div class="skills-bar"><div class="skills-fill" style="width: 85%;"></div></div>
+    <p>SoC2, HIPPA, GDPR Compliance</p>
+    <div class="skills-bar"><div class="skills-fill" style="width: 75%;"></div></div>
+    <p>GitHub Enterprise, Security, Actions</p>
+    <div class="skills-bar"><div class="skills-fill" style="width: 80%;"></div></div>
+    <p>AWS (S3, Route 53, CM, Cloud Front), Azure</p>
+    <div class="skills-bar"><div class="skills-fill" style="width: 80%;"></div></div>
+    <p>Web Application Penetration Testing, VAPT, Vulnerability Analysis</p>
+    <div class="skills-bar"><div class="skills-fill" style="width: 90%;"></div></div>
+    <p>Burp Suite Professional Edition, OWASP ZAP, Kali Linux</p>
+    <div class="skills-bar"><div class="skills-fill" style="width: 80%;"></div></div>
+    <p>JQuery, JavaScript, HTML, CSS</p>
+    <div class="skills-bar"><div class="skills-fill" style="width: 70%;"></div></div>
+  </div>
+
+  <div class="container section" id="work">
+    <h2>My Work</h2>
+    <p>6+ Years of Experience | 4 Open Source Projects | 1000+ Vulnerabilities Fixed | 15+ Products VAPT Tested</p>
+    <div class="buttons">
+      <button class="btn">Security & Compliance</button>
+      <button class="btn">Blogs</button>
+      <button class="btn">JSON-XML Things</button>
+    </div>
+  </div>
+
+  <div class="container section" id="contact">
+    <h2>Where I Work</h2>
+    <p>Pune, India<br>Phone: +91 8951174685<br>Email: souradipGhosh@outlook.com</p>
+    <form class="contact-form" action="https://formspree.io/f/mqkwqzly" method="POST">
+      <input type="text" name="name" placeholder="Your Name"><br>
+      <label>
+        Your email:<br/>
+        <input type="email" name="email" placeholder="Your Email"><br>
+      </label>
+      <label>
+        Your message:
+        <textarea name="message" rows="4" placeholder="Your Message"></textarea><br>
+      </label>
+      <button class="btn" type="submit">Send Message</button>
+    </form>
+  </div>
+
+  <div class="container section" id="social">
+    <div class="footer">
+        <a class="btn" href="#top">↑ To the top</a>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+    </div>
+  </div>
+  
+
+  <script>
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    const letters = "01";
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = Array.from({length: columns}, () => 1);
+
+    function draw() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#00ffcc';
+      ctx.font = `${fontSize}px monospace`;
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 35);
+  </script>
+</body>
+</html>
