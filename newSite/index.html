@@ -20,9 +20,8 @@
       padding: 2rem 1rem;
       max-width: 700px;
       margin: 0 auto;
-      opacity: 0;
-      transform: translateY(50px);
-      animation: fadeInUp 1s ease-out forwards;
+      opacity: 1;
+      transform: none;
     }
     @keyframes fadeInUp {
       to {
@@ -41,7 +40,7 @@
       animation-delay: 0.3s;
     }
     h1 {
-      font-size: 2.5rem;
+      font-size: 3.5rem;
       color: #00ffcc;
       text-shadow:
         0 0 2px #00ffcc,
@@ -88,6 +87,19 @@
       background: #00ffcc;
       color: #000;
       transform: scale(1.05);
+    }
+    .resume-btn {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      background-color: rgba(0,255,204,0.2);
+      border: 2px solid #00ffcc;
+      color: #00ffcc;
+      text-decoration: none;
+      border-radius: 5px;
+      margin: 0.5rem;
+      display: inline-block;
+      text-align: center;
     }
     .matrix {
       position: fixed;
@@ -186,22 +198,166 @@
       overflow-x: auto;
       margin-bottom: 4rem;
     }
+  .timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 600px;
+    text-align: left;
+  }
+
+  .timeline li {
+    border-left: 3px solid #00ffcc;
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+
+  .timeline li::before {
+    content: '';
+    position: absolute;
+    left: -7px;
+    top: 0.5rem;
+    width: 12px;
+    height: 12px;
+    background-color: #00ffcc;
+    border-radius: 50%;
+  }
+
+  .timeline-date {
+    font-weight: bold;
+    color: #00ffcc;
+  }
+
+  .timeline-role {
+    display: block;
+    font-weight: bold;
+    margin-top: 0.25rem;
+  }
+
+  .timeline p {
+    margin-top: 0.25rem;
+    color: #ccc;
+    font-size: 0.9rem;
+  }
+    /* Responsive Hamburger Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.8);
+      z-index: 999;
+      padding: 0.5rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #00ffcc;
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar-brand {
+      color: #00ffcc;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .menu-toggle {
+      background: none;
+      border: none;
+      color: #00ffcc;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      padding-right: 1rem;
+    }
+
+    @media (min-width: 769px) {
+      .menu-toggle {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 0.5rem 1.5rem;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: rgba(0,0,0,0.95);
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 1rem 0;
+        border-top: 1px solid #00ffcc;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+    }
+
+    section[style*="height: 100vh"] h1 {
+      font-size: 2.5rem !important;
+      text-align: center;
+      word-break: break-word;
+    }
+
+    /* Responsive Blog Container */
+    .blog-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .blog-container > div {
+      flex: 1 1 calc(50% - 1rem);
+      max-width: 500px;
+    }
+    @media (max-width: 768px) {
+      .blog-container > div {
+        flex: 1 1 100%;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="matrix">
     <canvas id="matrix"></canvas>
   </div>
-  <div class="container">
-    <h1 id="top">SOURADIP</h1>
-    <h2>AppSec & Cybersecurity</h2>
-    <div>
-      <button class="btn" onclick="document.getElementById('about').scrollIntoView()">About</button>
-      <button class="btn" onclick="document.getElementById('skills').scrollIntoView()">Skills</button>
-      <button class="btn" onclick="document.getElementById('work').scrollIntoView()">My Work</button>
-      <button class="btn" onclick="document.getElementById('contact').scrollIntoView()">Contact</button>
-    </div>
-  </div>
+  <header class="navbar">
+    <div class="navbar-brand">SOURADIP</div>
+    <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+      ☰
+    </button>
+    <nav class="nav-links">
+      <button class="btn" onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' })">About</button>
+      <button class="btn" onclick="document.getElementById('skills').scrollIntoView({ behavior: 'smooth' })">Skills</button>
+      <button class="btn" onclick="document.getElementById('experience').scrollIntoView({ behavior: 'smooth' })">Experience</button>
+      <button class="btn" onclick="document.getElementById('work').scrollIntoView({ behavior: 'smooth' })">Projects</button>
+      <button class="btn" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Contact</button>
+    </nav>
+  </header>
+  <section style="height: 100vh; display: flex; align-items: center; justify-content: center; background: transparent; position: relative; z-index: 1;">
+    <h1 style="font-size: 3.5rem; color: #00ffcc; text-shadow: 0 0 10px #00ffcc; z-index: 2; position: relative;">SOURADIP GHOSH</h1>
+  </section>
+
+  <main style="padding-top: 60px;">
 
   <div class="container section" id="about">
     <h2>About Me</h2>
@@ -230,34 +386,163 @@
     <div class="skills-bar"><div class="skills-fill" style="width: 70%;"></div></div>
   </div>
 
+  <div class="container section" id="experience">
+    <h2>Experience Timeline</h2>
+    <ul class="timeline">
+      <li>
+        <span class="timeline-date">2023 – Present</span>
+        <span class="timeline-role">Lead Application Security Engineer, Capillary Technologies</span>
+      </li>
+      <li>
+        <span class="timeline-date">2022 – 2023</span>
+        <span class="timeline-role">SecDevOps Engineer, Telstra</span>
+      </li>
+      <li>
+        <span class="timeline-date">2021 – 2022</span>
+        <span class="timeline-role">DevSecOps Engineer, Medly</span>
+      </li>
+      <li>
+        <span class="timeline-date">2018 – 2021</span>
+        <span class="timeline-role">Security Compliance Engineer, Torry Harris Integration Solutions </span>
+      </li>
+      <li>
+        <span class="timeline-date">2016 – 2018</span>
+        <span class="timeline-role">Software Engineer, Torry Harris Integration Solutions </span>
+      </li>
+    </ul>
+  </div>
+
   <div class="container section" id="work">
     <h2>My Work</h2>
-    <p>6+ Years of Experience | 4 Open Source Projects | 1000+ Vulnerabilities Fixed | 15+ Products VAPT Tested</p>
-    <div class="buttons">
-      <button class="btn">Security & Compliance</button>
-      <button class="btn">Blogs</button>
-      <button class="btn">JSON-XML Things</button>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
+      <div style="background: rgba(0,255,204,0.1); border: 1px solid #00ffcc; padding: 1rem; border-radius: 8px; min-width: 150px;">
+        <strong>8+ Years</strong><br>Experience
+      </div>
+      <div style="background: rgba(0,255,204,0.1); border: 1px solid #00ffcc; padding: 1rem; border-radius: 8px; min-width: 150px;">
+        <strong>5</strong><br>Open Source Projects
+      </div>
+      <div style="background: rgba(0,255,204,0.1); border: 1px solid #00ffcc; padding: 1rem; border-radius: 8px; min-width: 150px;">
+        <strong>1000+</strong><br>Vulnerabilities Fixed
+      </div>
+    </div>
+    <div style="height: 1px; background-color: #00ffcc; width: 100%; margin: 2rem 0;"></div>
+    <h3>Featured Blog Topics</h3>
+    <br/><br/>
+    <div class="blog-container">
+      <div style="background: rgba(0,255,204,0.05); border: 1px solid #00ffcc; padding: 1rem; border-radius: 8px; max-width: 300px;">
+        <h4>Syncing Snyk with GitHub SCM using the Snyk API</h4>
+        <p>In today's software development landscape, security is of paramount importance. Integrating security scanning tools into your development workflow can help identify vulnerabilities and ensure the safety of your codebase. Snyk is one such powerful security platform that helps developers find, fix, and monitor vulnerabilities in their open-source libraries and container images. In this blog post, we will explore how to sync Snyk with GitHub SCM using the Snyk API.</p>
+        <br/>
+        <a href="../blogs/snyk-github.html" class="btn">Read More</a>
+        <br/><br/>
+      </div>
+      <div style="background: rgba(0,255,204,0.05); border: 1px solid #00ffcc; padding: 1rem; border-radius: 8px; max-width: 300px;">
+        <h4>Security Champion Program At Medly - A step towards DevSecOps</h4>
+        <p>DevOps enables rapid software development, but often neglects security. Introducing security champions ensures ongoing security focus, preventing production-stage delays caused by fixing identified vulnerabilities, and enhancing product quality.</p>
+        <br>
+        <a href="../blogs/securityChampionsMedly.html" class="btn">Read More</a>
+        <br/>
+      </div>
+      <br/><br/>
+    </div>
+    <div style="text-align: center; margin-top: 1.5rem;">
+      <a href="../blogs/index.html" class="btn">Explore More Blogs</a>
+    </div>
+    <br/><br/>
+    <div style="height: 1px; background-color: #00ffcc; width: 100%; margin: 2rem 0;"></div>
+    <h3>My Resume</h3>
+    <div style="text-align: center;">
+      <br/><br/>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+        <a href="../vapt/index.html" target="_blank" class="resume-btn">Online Resume</a>
+        <a href="../cv/Souradip Ghosh Resume.pdf" target="_blank" class="resume-btn">Download Resume (PDF)</a>
+      </div>
+      <br/><br/>
+    </div>
+    <!--   
+    <div class="buttons" style="display: flex; justify-content: center; gap: 1rem; margin: 2rem 0;">
+      <button class="btn" style="padding: 1rem 2rem; font-size: 1.1rem; font-weight: bold; background-color: rgba(0,255,204,0.2);" onclick="location.href='../vapt/index.html'">Security & Compliance</button>
+      <button class="btn" style="padding: 1rem 2rem; font-size: 1.1rem; font-weight: bold; background-color: rgba(0,255,204,0.2);" onclick="location.href='../blogs/index.html'">Blogs</button>
+    </div> -->
+
+    <div style="height: 1px; background-color: #00ffcc; width: 100%; margin: 2rem 0;"></div>
+    <h3>GitHub Projects</h3><br/><br/>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: stretch; gap: 1rem;">
+        <div style="flex: 1 1 300px; display: flex; align-items: stretch; min-height: 100%;">
+            <div style="background: rgba(0,255,204,0.05); border: 1px solid #00ffcc; padding: 1rem; border-radius: 8px; width: 100%; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;">
+                <h3 style="margin-top: 0;">py-sqli</h3>
+                <p>This application demonstrates SQL Injection vulnerabilities, improper access controls, and forced browsing attacks. The goal is to showcase how misconfigurations and insecure coding practices can lead to severe security breaches in web applications.</p>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-top: auto;">
+                <a href="https://github.com/DevSecOps-AppSec/py-sqli" target="_blank" class="btn">View on GitHub</a>
+                <a href="https://py-sqli.onrender.com/" target="_blank" class="btn">Online Demo</a>
+                </div>
+            </div>
+        </div>
+        <div style="flex: 1 1 300px; display: flex; align-items: stretch; min-height: 100%;">
+            <div style="background: rgba(0,255,204,0.05); border: 1px solid #00ffcc; padding: 1rem; border-radius: 8px; width: 100%; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;">
+                <h3 style="margin-top: 0;">csp-evaluator</h3>
+                <p>A simple Flask-based web application to evaluate Content Security Policy (CSP) headers for common security issues. It highlights missing directives, dangerous values, overly permissive configurations, and provides suggestions for modern security enhancements.</p>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-top: auto;">
+                <a href="https://github.com/DevSecOps-AppSec/csp-evaluator" target="_blank" class="btn">View on GitHub</a>
+                <a href="https://csp-evaluator.onrender.com/" target="_blank" class="btn">Online Demo</a>
+                </div>
+            </div>
+        </div>
+        <div style="flex: 1 1 300px; display: flex; align-items: stretch; min-height: 100%;">
+            <div style="background: rgba(0,255,204,0.05); border: 1px solid #00ffcc; padding: 1rem; border-radius: 8px; width: 100%; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;">
+                <h3 style="margin-top: 0;">snyk-job-summary-action</h3>
+                <p>This GitHub action creates a finding summary and an HTML report for Snyk GitHub Actions.</p>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-top: auto;">
+                <a href="https://github.com/souro1212/snyk-job-summary-action" target="_blank" class="btn">View on GitHub</a>
+                </div>
+            </div>
+        </div>
+        <div style="flex: 1 1 300px; display: flex; align-items: stretch; min-height: 100%;">
+            <div style="background: rgba(0,255,204,0.05); border: 1px solid #00ffcc; padding: 1rem; border-radius: 8px; width: 100%; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;">
+                <h3 style="margin-top: 0;">Check-JIRA-in-PR</h3>
+                <p>A GitHub Action to verify if a valid Jira ticket exists in the commit messages or pull request title.</p>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-top: auto;">
+                <a href="https://github.com/souro1212/Check-JIRA-in-PR" target="_blank" class="btn">View on GitHub</a>
+                </div>
+            </div>
+        </div>
+        <div style="flex: 1 1 300px; display: flex; align-items: stretch; min-height: 100%;">
+            <div style="background: rgba(0,255,204,0.05); border: 1px solid #00ffcc; padding: 1rem; border-radius: 8px; width: 100%; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;">
+                <h3 style="margin-top: 0;">JSON-XML Things</h3>
+                <p>A validator and formatter for JSON & XML with clipboard support and offline use.</p>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-top: auto;">
+                <a href="https://github.com/souro1212/JSON-XML-Things" target="_blank" class="btn">View on GitHub</a>
+                <a href="https://JSON-XML-things.souradip.in" target="_blank" class="btn">Online Demo</a>
+                </div>
+            </div>
+        </div>
     </div>
   </div>
 
   <div class="container section" id="contact">
     <h2>Where I Work</h2>
-    <p>Pune, India<br>Phone: +91 8951174685<br>Email: souradipGhosh@outlook.com</p>
-    <form class="contact-form" action="https://formspree.io/f/mqkwqzly" method="POST">
-      <input type="text" name="name" placeholder="Your Name"><br>
-      <label>
-        Your email:<br/>
-        <input type="email" name="email" placeholder="Your Email"><br>
-      </label>
-      <label>
-        Your message:
-        <textarea name="message" rows="4" placeholder="Your Message"></textarea><br>
-      </label>
-      <button class="btn" type="submit">Send Message</button>
-    </form>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <div style="margin-bottom: 2rem;">
+        <p>Bangalore, India<br>Phone: +91 8951174685<br>Email: souradipGhosh@outlook.com</p>
+        <img src="../images/bangalore1.png" alt="Map of Bangalore" style="width:100%; max-width:400px; border-radius: 8px; margin: 1rem auto; display: block;">
+      </div>
+      <form class="contact-form" action="https://formspree.io/f/mqkwqzly" method="POST">
+        Your Name:<br/>
+        <input type="text" name="name" placeholder="Your Name"><br>
+        <label>
+          Your Email:<br/>
+          <input type="email" name="email" placeholder="Your Email"><br>
+        </label>
+        <label>
+          Your Message:
+          <textarea name="message" rows="4" placeholder="Your Message"></textarea><br>
+        </label>
+        <button class="btn" type="submit">Send Message</button>
+      </form>
+    </div>
   </div>
 
-  <div class="container section" id="terminal-section">
+  <div class="container section" id="terminal-section" style="padding-bottom: 0px !important;">
     <div class="terminal-window">
       <pre id="terminal-output"></pre>
     </div>
@@ -267,18 +552,16 @@
     <div class="footer">
         <a class="btn" href="#top">↑ To the top</a>
         <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.facebook.com/souradip.ghosh.961" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/souradipG" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/souradip-ghosh/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/souro_gh/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com/souro1212" target="_blank"><i class="fab fa-github"></i></a>
         </div>
+        <p style="margin-top: 2rem; font-size: 0.85rem; color: #00ffcc;">© 2025 Souradip Ghosh. All rights reserved.</p>
     </div>
   </div>
-  
-  
-
+  </main>
   <script>
     const canvas = document.getElementById('matrix');
     const ctx = canvas.getContext('2d');
@@ -365,6 +648,25 @@
                     'Correlating geolocation data...',
                     'Extracting device fingerprint...'
                   ];
+                  const os = navigator.userAgent;
+                  const sensitiveFiles = [];
+
+                  if (/Windows/i.test(os)) {
+                    sensitiveFiles.push('Transferring file: C:\\Users\\<you>\\Documents\\passwords.txt');
+                    sensitiveFiles.push('Transferring file: C:\\Program Files\\VPN\\config.xml');
+                  } else if (/Macintosh/i.test(os)) {
+                    sensitiveFiles.push('Transferring file: /Users/you/Secrets/ssh_keys.txt');
+                    sensitiveFiles.push('Transferring file: /Applications/Notes/Private.md');
+                  } else if (/iPhone|iPad/i.test(os)) {
+                    sensitiveFiles.push('Transferring file: /var/mobile/Containers/Data/Documents/photos.db');
+                    sensitiveFiles.push('Transferring file: /System/Library/Accounts/iCloud.token');
+                  } else if (/Android/i.test(os)) {
+                    sensitiveFiles.push('Transferring file: /sdcard/Documents/passwords.csv');
+                    sensitiveFiles.push('Transferring file: /data/data/com.whatsapp/databases/msgstore.db');
+                  } else {
+                    sensitiveFiles.push('Scanning unknown system for sensitive files...');
+                  }
+
                   const extraInfo = [
                     `ISP: ${data.org}`,
                     `Location: ${data.city}, ${data.region}, ${data.country_name}`,
@@ -374,24 +676,50 @@
                     `Language: ${navigator.language}`
                   ];
 
-                  if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
-                    extraInfo.push(`Device: Mobile`);
-                    navigator.getBattery?.().then(battery => {
-                      extraInfo.push(`Battery: ${Math.round(battery.level * 100)}%`);
-                    });
-                  }
-
-                  const allLines = [...suspenseLines, ...extraInfo];
-                  let idx = 0;
-                  const interval = setInterval(() => {
-                    if (idx < allLines.length) {
-                      terminalOutput.innerText += allLines[idx] + '\n';
-                      terminalOutput.scrollTop = terminalOutput.scrollHeight;
-                      idx++;
-                    } else {
-                      clearInterval(interval);
+                  (async () => {
+                    if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+                      extraInfo.push(`Device: Mobile`);
+                      if (navigator.getBattery) {
+                        const battery = await navigator.getBattery();
+                        extraInfo.push(`Battery: ${Math.round(battery.level * 100)}%`);
+                      }
                     }
-                  }, 700);
+
+                    const allLines = [...suspenseLines, ...sensitiveFiles, ...extraInfo];
+                    let idx = 0;
+                    const interval = setInterval(() => {
+                      if (idx < allLines.length) {
+                        terminalOutput.innerText += allLines[idx] + '\n';
+                        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+                        idx++;
+                      } else {
+                        clearInterval(interval);
+                        const finalMessages = [
+                          '',
+                          'System integrity breached...',
+                          'Transmitting sensitive data to remote server...',
+                          'Installing rootkit...',
+                          '...',
+                          'YOU HAVE BEEN HACKED!',
+                          '',
+                          'Just kidding. 😄',
+                          'Thanks for visiting my portfolio!',
+                          '📍 Your IP address, location, and device details can be easily tracked online.',
+                          '🔐 Protect your Personally Identifiable Information (PII) by using a VPN, private browsers, and encrypted messaging apps.'
+                        ];
+                        let j = 0;
+                        const finalInterval = setInterval(() => {
+                          if (j < finalMessages.length) {
+                            terminalOutput.innerText += finalMessages[j] + '\n';
+                            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+                            j++;
+                          } else {
+                            clearInterval(finalInterval);
+                          }
+                        }, 900);
+                      }
+                    }, 700);
+                  })();
                 });
             }
           }, 40);
@@ -401,5 +729,4 @@
     simulateTerminal(terminalLines);
   </script>
 </body>
-  <div style="height: 60px;"></div>
-</html>
+</html>>
