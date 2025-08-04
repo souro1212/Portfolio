@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="Souradip Ghosh, Cybersecurity, Application Security, AppSec, Ethical Hacking, Bug Bounty, Penetration Testing, DevSecOps, Secure Coding, Vulnerability Assessment, Cybersecurity Portfolio, AppSec Portfolio, Security Research, Offensive Security">
   <title>Souradip | Cybersecurity | AppSec</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -348,6 +349,11 @@
   </style>
 </head>
 <body>
+  <!-- Hidden Easter‑Egg -->
+<div id="hidden-message" style="display:none;margin:1rem;padding:1rem;background:#111;border:1px solid #00ffcc;color:#00ffcc;border-radius:5px;">
+  Psst! You’ve discovered the hidden message. Always be curious and explore!
+</div>
+
   <div class="matrix">
     <canvas id="matrix"></canvas>
   </div>
@@ -741,6 +747,34 @@
     }
 
     simulateTerminal(terminalLines);
+
+  // Easter‑egg: reveal hidden message via Konami Code
+  (function() {
+    const secretCode = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    let codeIndex = 0;
+    document.addEventListener('keydown', function(e) {
+      if (e.key.toLowerCase() === secretCode[codeIndex].toLowerCase()) {
+        codeIndex++;
+        if (codeIndex === secretCode.length) {
+          const msg = document.getElementById('hidden-message');
+          if (msg) {
+            msg.style.display = 'block';
+            msg.style.opacity = 0;
+            let opacity = 0;
+            const fadeInterval = setInterval(() => {
+              opacity += 0.05;
+              msg.style.opacity = opacity;
+              if (opacity >= 1) clearInterval(fadeInterval);
+            }, 50);
+          }
+          alert('Surprise! You unlocked a secret!');
+          codeIndex = 0;
+        }
+      } else {
+        codeIndex = 0;
+      }
+    });
+  })();
   </script>
 </body>
 </html>>
