@@ -612,6 +612,34 @@
 
     setInterval(draw, 35);
 
+     // Easter‑egg: reveal hidden message via Konami Code
+  (function() {
+    const secretCode = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    let codeIndex = 0;
+    document.addEventListener('keydown', function(e) {
+      if (e.key.toLowerCase() === secretCode[codeIndex].toLowerCase()) {
+        codeIndex++;
+        if (codeIndex === secretCode.length) {
+          const msg = document.getElementById('hidden-message');
+          if (msg) {
+            msg.style.display = 'block';
+            msg.style.opacity = 0;
+            let opacity = 0;
+            const fadeInterval = setInterval(() => {
+              opacity += 0.05;
+              msg.style.opacity = opacity;
+              if (opacity >= 1) clearInterval(fadeInterval);
+            }, 50);
+          }
+          alert('Surprise! You unlocked a secret!');
+          codeIndex = 0;
+        }
+      } else {
+        codeIndex = 0;
+      }
+    });
+  })();
+
     const terminalOutput = document.getElementById('terminal-output');
     const terminalLines = [
       '$ Initializing secure shell...',
@@ -747,33 +775,6 @@
 
     simulateTerminal(terminalLines);
 
-  // Easter‑egg: reveal hidden message via Konami Code
-  (function() {
-    const secretCode = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
-    let codeIndex = 0;
-    document.addEventListener('keydown', function(e) {
-      if (e.key.toLowerCase() === secretCode[codeIndex].toLowerCase()) {
-        codeIndex++;
-        if (codeIndex === secretCode.length) {
-          const msg = document.getElementById('hidden-message');
-          if (msg) {
-            msg.style.display = 'block';
-            msg.style.opacity = 0;
-            let opacity = 0;
-            const fadeInterval = setInterval(() => {
-              opacity += 0.05;
-              msg.style.opacity = opacity;
-              if (opacity >= 1) clearInterval(fadeInterval);
-            }, 50);
-          }
-          alert('Surprise! You unlocked a secret!');
-          codeIndex = 0;
-        }
-      } else {
-        codeIndex = 0;
-      }
-    });
-  })();
   </script>
 </body>
 </html>>
