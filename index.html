@@ -613,11 +613,21 @@
     // Easter‑egg: reveal hidden message via Konami Code with rotating messages
   (function() {
     const messages = [
-      "🔐 Fun Fact: The first computer virus was created in 1986 and was called 'Brain'. Cybersecurity has been a cat-and-mouse game ever since!",
-      "🕵️ You found the secret! Did you know? The term 'ethical hacking' was coined in the mid-1990s to describe penetration testing with good intentions.",
-      "🛡️ Hidden knowledge unlocked! Public-key cryptography (RSA) was first described secretly by British intelligence in 1973, years before it was publicly announced.",
-      "🧑‍💻 Security tip: 'Never trust, always verify.' You’ve just verified that secrets can be fun to discover!",
-      "🎩 Easter egg found! Bug bounties have paid millions to white-hat hackers who help secure the internet—maybe you’ll be next!"
+          "🔐 Fun Fact: The first computer virus was created in 1986 and was called 'Brain'. Cybersecurity has been a cat-and-mouse game ever since!",
+          "🕵️ You found the secret! Did you know? The term 'ethical hacking' was coined in the mid-1990s to describe penetration testing with good intentions.",
+          "🛡️ Hidden knowledge unlocked! Public-key cryptography (RSA) was first described secretly by British intelligence in 1973, years before it was publicly announced.",
+          "🧑‍💻 Security tip: 'Never trust, always verify.' You’ve just verified that secrets can be fun to discover!",
+          "🎩 Easter egg found! Bug bounties have paid millions to white-hat hackers who help secure the internet—maybe you’ll be next!",
+          "📜 OWASP Top 10 Reminder: Broken Access Control remains the #1 web vulnerability. Secure your APIs and endpoints!",
+          "⚙️ DevSecOps Insight: Integrating security early in the CI/CD pipeline reduces vulnerabilities by up to 80%.",
+          "🔍 AppSec Wisdom: Automated secret scanning can prevent accidental key leaks—tools like Gitleaks and TruffleHog are your best friends!",
+          "🛠️ Code Review Tip: Regular threat modeling helps identify design flaws before they become exploitable vulnerabilities.",
+          "🚨 Vulnerability Fact: The average time to exploit a disclosed CVE is less than 7 days—patch fast, stay safe!",
+          "🔒 Security Principle: Least privilege is not just a buzzword—it’s a cornerstone of robust application security.",
+          "🧬 Fun Fact: The concept of 'Zero Trust Architecture' was first introduced by Forrester Research in 2010 and is now a global security standard.",
+          "🦊 Secret Hunter Mode: Gitleaks once caught over 10,000 leaked secrets in a single org-wide scan—manual reviews can’t compete with automation!",
+          "🐋 TruffleHog Tale: Deep scanning git history can reveal secrets long forgotten but still exploitable. Hunt them before attackers do!",
+          "💡 AppSec Pro Tip: Combining Gitleaks pre-commit hooks with TruffleHog organization-wide scans gives maximum secret leakage protection."
     ];
 
     const secretCode = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
